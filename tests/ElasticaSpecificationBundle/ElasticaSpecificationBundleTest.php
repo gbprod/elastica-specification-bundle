@@ -2,7 +2,9 @@
 
 namespace Tests\GBProd\ElasticaSpecificationBundle;
 
+use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\ExpressionBuilderPass;
 use GBProd\ElasticaSpecificationBundle\ElasticaSpecificationBundle;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
 /**
@@ -18,5 +20,17 @@ class ElasticaSpecificationBundleTest extends \PHPUnit_Framework_TestCase
 
         $this->assertInstanceOf(ElasticaSpecificationBundle::class, $bundle);
         $this->assertInstanceOf(Bundle::class, $bundle);
+    }
+
+    public function testBuildAddCompilerPass()
+    {
+        $container = $this->prophesize(ContainerBuilder::class);
+        $container
+            ->addCompilerPass(new ExpressionBuilderPass())
+            ->shouldBeCalled()
+        ;
+
+        $bundle = new ElasticaSpecificationBundle();
+        $bundle->build($container->reveal());
     }
 }

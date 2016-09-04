@@ -1,0 +1,8 @@
+services:
+    gbprod.elastica_specification_registry:
+        class: GBProd\ElasticaSpecification\Registry
+
+    gbprod.elastica_specification_handler:
+        class: GBProd\ElasticaSpecification\Handler
+        arguments:
+            - "@gbprod.elastica_specification_registry"
