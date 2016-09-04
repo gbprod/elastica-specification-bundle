@@ -7,11 +7,11 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Register elastica expression builder
+ * Register elastica query factories
  *
- * @author gbprod
+ * @author GBProd <contact@gb-prod.fr>
  */
-class ExpressionBuilderPass implements CompilerPassInterface
+class QueryFactoryPass implements CompilerPassInterface
 {
     /**
      * {inheritdoc}
@@ -24,18 +24,18 @@ class ExpressionBuilderPass implements CompilerPassInterface
 
         $handler = $container->findDefinition('gbprod.elastica_specification_handler');
 
-        $builders = $container->findTaggedServiceIds('elastica.expression_builder');
+        $factories = $container->findTaggedServiceIds('elastica.query_factory');
 
-        foreach ($builders as $id => $tags) {
+        foreach ($factories as $id => $tags) {
             foreach ($tags as $attributes) {
                 if (!isset($attributes['specification'])) {
                     throw new \Exception(
-                        'The elastica.expression_builder tag must always have a "specification" attribute'
+                        'The elastica.query_factory tag must always have a "specification" attribute'
                     );
                 }
 
                 $handler->addMethodCall(
-                    'registerBuilder',
+                    'registerFactory',
                     [$attributes['specification'], new Reference($id)]
                 );
             }

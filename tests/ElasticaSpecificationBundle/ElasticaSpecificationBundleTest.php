@@ -2,7 +2,7 @@
 
 namespace Tests\GBProd\ElasticaSpecificationBundle;
 
-use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\ExpressionBuilderPass;
+use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\QueryFactoryPass;
 use GBProd\ElasticaSpecificationBundle\ElasticaSpecificationBundle;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
@@ -26,7 +26,7 @@ class ElasticaSpecificationBundleTest extends \PHPUnit_Framework_TestCase
     {
         $container = $this->prophesize(ContainerBuilder::class);
         $container
-            ->addCompilerPass(new ExpressionBuilderPass())
+            ->addCompilerPass(new QueryFactoryPass())
             ->shouldBeCalled()
         ;
 
