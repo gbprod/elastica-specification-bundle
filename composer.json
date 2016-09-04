@@ -1,0 +1,28 @@
+{
+    "name": "gbprod/elastica-specification-bundle",
+    "description": "This bundle integrates elastica-specification with Symfony",
+    "type": "bundle",
+    "require": {
+        "php": ">=5.6",
+        "gbprod/elastica-specification": "^0.1-alpha",
+        "symfony/framework-bundle": "^2.3|^3.0",
+        "symfony/expression-language": "^2.3|^3.0"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^5.5"
+    },
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gilles",
+            "email": "contact@gb-prod.fr"
+        }
+    ],
+    "minimum-stability": "stable",
+    "autoload": {
+        "psr-4": {
+            "GBProd\\": "src/",
+            "Tests\\GBProd\\": "tests/"
+        }
+    }
+}
