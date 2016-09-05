@@ -7,10 +7,10 @@ This bundle integrates [elastica-specification](git@github.com:gbprod/elastica-s
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/gbprod/elastica-specification-bundle/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/gbprod/elastica-specification-bundle/?branch=master)
 [![Dependency Status](https://www.versioneye.com/user/projects/574a9c9ace8d0e004130d337/badge.svg)](https://www.versioneye.com/user/projects/574a9c9ace8d0e004130d337)
 
-[![Latest Stable Version](https://poser.pugx.org/gbprod/elastica-specification-bundle/v/stable)](https://packagist.org/packages/gbprod/elastica-specification)
-[![Total Downloads](https://poser.pugx.org/gbprod/elastica-specification-bundle/downloads)](https://packagist.org/packages/gbprod/elastica-specification)
-[![Latest Unstable Version](https://poser.pugx.org/gbprod/elastica-specification-bundle/v/unstable)](https://packagist.org/packages/gbprod/elastica-specification)
-[![License](https://poser.pugx.org/gbprod/elastica-specification-bundle/license)](https://packagist.org/packages/gbprod/elastica-specification)
+[![Latest Stable Version](https://poser.pugx.org/gbprod/elastica-specification-bundle/v/stable)](https://packagist.org/packages/gbprod/elastica-specification-bundle)
+[![Total Downloads](https://poser.pugx.org/gbprod/elastica-specification-bundle/downloads)](https://packagist.org/packages/gbprod/elastica-specification-bundle)
+[![Latest Unstable Version](https://poser.pugx.org/gbprod/elastica-specification-bundle/v/unstable)](https://packagist.org/packages/gbprod/elastica-specification-bundle)
+[![License](https://poser.pugx.org/gbprod/elastica-specification-bundle/license)](https://packagist.org/packages/gbprod/elastica-specification-bundle)
 
 ## Installation
 
