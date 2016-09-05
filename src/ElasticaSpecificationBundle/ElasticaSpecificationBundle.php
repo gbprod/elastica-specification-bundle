@@ -2,7 +2,7 @@
 
 namespace GBProd\ElasticaSpecificationBundle;
 
-use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\ExpressionBuilderPass;
+use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\QueryFactoryPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -19,6 +19,6 @@ class ElasticaSpecificationBundle extends Bundle
     public function build(ContainerBuilder $container)
     {
         parent::build($container);
-        $container->addCompilerPass(new ExpressionBuilderPass());
+        $container->addCompilerPass(new QueryFactoryPass());
     }
 }

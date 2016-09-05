@@ -3,21 +3,21 @@
 namespace Tests\GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler;
 
 use GBProd\ElasticaSpecification\Handler;
-use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\ExpressionBuilderPass;
+use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\QueryFactoryPass;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\DependencyInjection\Definition;
 use Symfony\Component\DependencyInjection\Reference;
 
 /**
- * Tests for ExpressionBuilderPass
+ * Tests for QueryFactoryPass
  *
  * @author gbprod <contact@gb-prod.fr>
  */
-class ExpressionBuilderPassTest extends \PHPUnit_Framework_TestCase
+class QueryFactoryPassTest extends \PHPUnit_Framework_TestCase
 {
     public function testThrowExceptionIfNoHandlerDefinition()
     {
-        $pass = new ExpressionBuilderPass();
+        $pass = new QueryFactoryPass();
 
         $this->expectException(\Exception::class);
 
@@ -26,7 +26,7 @@ class ExpressionBuilderPassTest extends \PHPUnit_Framework_TestCase
 
     public function testDoNothingIfNoTaggedServices()
     {
-        $pass = new ExpressionBuilderPass();
+        $pass = new QueryFactoryPass();
         $container = $this->createContainerWithHandler();
 
         $pass->process($container);
@@ -53,12 +53,12 @@ class ExpressionBuilderPassTest extends \PHPUnit_Framework_TestCase
 
     public function testThrowExceptionIfTagHasNoSpecification()
     {
-        $pass = new ExpressionBuilderPass();
+        $pass = new QueryFactoryPass();
 
         $container = $this->createContainerWithHandler();
         $container
-            ->register('builder', \stdClass::class)
-            ->addTag('elastica.expression_builder')
+            ->register('factory', \stdClass::class)
+            ->addTag('elastica.query_factory')
         ;
 
         $this->expectException(\Exception::class);
@@ -67,17 +67,17 @@ class ExpressionBuilderPassTest extends \PHPUnit_Framework_TestCase
 
     public function testAddMethodCalls()
     {
-        $pass = new ExpressionBuilderPass();
+        $pass = new QueryFactoryPass();
 
         $container = $this->createContainerWithHandler();
         $container
-            ->register('builder1', 'Builder1')
-            ->addTag('elastica.expression_builder', ['specification' => 'Specification1'])
+            ->register('factory1', 'Factory1')
+            ->addTag('elastica.query_factory', ['specification' => 'Specification1'])
         ;
 
         $container
-            ->register('builder2', 'Builder2')
-            ->addTag('elastica.expression_builder', ['specification' => 'Specification2'])
+            ->register('factory2', 'Factory2')
+            ->addTag('elastica.query_factory', ['specification' => 'Specification2'])
         ;
 
         $pass->process($container);
@@ -89,15 +89,15 @@ class ExpressionBuilderPassTest extends \PHPUnit_Framework_TestCase
 
         $this->assertCount(2, $calls);
 
-        $this->assertEquals('registerBuilder', $calls[0][0]);
+        $this->assertEquals('registerFactory', $calls[0][0]);
         $this->assertEquals('Specification1', $calls[0][1][0]);
         $this->assertInstanceOf(Reference::class, $calls[0][1][1]);
-        $this->assertEquals('builder1', $calls[0][1][1]);
+        $this->assertEquals('factory1', $calls[0][1][1]);
 
 
-        $this->assertEquals('registerBuilder', $calls[1][0]);
+        $this->assertEquals('registerFactory', $calls[1][0]);
         $this->assertEquals('Specification2', $calls[1][1][0]);
         $this->assertInstanceOf(Reference::class, $calls[1][1][1]);
-        $this->assertEquals('builder2', $calls[1][1][1]);
+        $this->assertEquals('factory2', $calls[1][1][1]);
     }
 }

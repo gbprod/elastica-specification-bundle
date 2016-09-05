@@ -36,7 +36,7 @@ public function registerBundles()
 }
 ```
 
-## Create your specification and your expression builder
+## Create your specification and your query factory
 
 Take a look to [Specification](https://github.com/gbprod/specification) and [Elastica Specification](https://github.com/gbprod/specification) libraries for more informations.
 
@@ -60,18 +60,18 @@ class IsAvailable implements Specification
 }
 ```
 
-### Create an expression builder
+### Create a query factory
 
 ```php
 <?php
 
-namespace GBProd\Acme\Infrastructure\Elastica\ExpressionBuilder\Product;
+namespace GBProd\Acme\Infrastructure\Elastica\QueryFactory\Product;
 
-use GBProd\ElasticaSpecification\ExpressionBuilder\Builder;
+use GBProd\ElasticaSpecification\QueryFactory\Factory;
 use GBProd\Specification\Specification;
 use Elastica\QueryBuilder;
 
-class IsAvailableBuilder implements Builder
+class IsAvailableFactory implements Factory
 {
     public function build(Specification $spec, QueryBuilder $qb)
     {
@@ -86,16 +86,16 @@ class IsAvailableBuilder implements Builder
 
 ## Configuration
 
-### Declare your Builder
+### Declare your Factory
 
 ```yaml
 // src/GBProd/Acme/AcmeBundle/Resource/config/service.yml
 
 services:
-    acme.elastica.expression_builder.is_available:
-        class: GBProd\Acme\Infrastructure\Elastica\ExpressionBuilder\Product\IsAvailableBuilder
+    acme.elastica.query_factory.is_available:
+        class: GBProd\Acme\Infrastructure\Elastica\QueryFactory\Product\IsAvailableFactory
         tags:
-            - { name: elastica.expression_builder, specification: GBProd\Acme\CoreDomain\Specification\Product\IsAvailable }
+            - { name: elastica.query_factory, specification: GBProd\Acme\CoreDomain\Specification\Product\IsAvailable }
 ```
 
 ### Inject handler in your repository class
