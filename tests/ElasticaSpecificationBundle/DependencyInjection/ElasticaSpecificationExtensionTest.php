@@ -2,10 +2,11 @@
 
 namespace Tests\GBProd\ElasticaSpecificationBundle\DependencyInjection;
 
-use Symfony\Component\DependencyInjection\ContainerBuilder;
+use Elastica\QueryBuilder;
 use GBProd\ElasticaSpecificationBundle\DependencyInjection\ElasticaSpecificationExtension;
 use GBProd\ElasticaSpecification\Handler;
 use GBProd\ElasticaSpecification\Registry;
+use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
  * Tests for ElasticaSpecificationExtension
@@ -31,12 +32,23 @@ class ElasticaSpecificationExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLoadHasServices()
     {
         $this->assertTrue(
+            $this->container->has('gbprod.elastica_specification_querybuilder')
+        );
+
+        $this->assertTrue(
             $this->container->has('gbprod.elastica_specification_registry')
         );
 
         $this->assertTrue(
             $this->container->has('gbprod.elastica_specification_handler')
         );
+    }
+
+    public function testLoadQueryBuilder()
+    {
+        $registry = $this->container->get('gbprod.elastica_specification_querybuilder');
+
+        $this->assertInstanceOf(QueryBuilder::class, $registry);
     }
 
     public function testLoadRegistry()
