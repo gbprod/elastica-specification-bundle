@@ -1,4 +1,7 @@
 services:
+    gbprod.elastica_specification_querybuilder:
+        class: Elastica\QueryBuilder
+
     gbprod.elastica_specification_registry:
         class: GBProd\ElasticaSpecification\Registry
 
@@ -6,3 +9,4 @@ services:
         class: GBProd\ElasticaSpecification\Handler
         arguments:
             - "@gbprod.elastica_specification_registry"
+            - "@gbprod.elastica_specification_querybuilder"
