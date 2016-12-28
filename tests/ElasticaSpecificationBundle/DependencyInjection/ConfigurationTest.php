@@ -2,8 +2,9 @@
 
 namespace Tests\GBProd\ElasticaSpecificationBundle\DependencyInjection;
 
-use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use GBProd\ElasticaSpecificationBundle\DependencyInjection\Configuration;
+use Symfony\Component\Config\Definition\Builder\TreeBuilder;
+use Symfony\Component\Config\Definition\Processor;
 
 /**
  * Tests for Configuration
@@ -12,20 +13,53 @@ use GBProd\ElasticaSpecificationBundle\DependencyInjection\Configuration;
  */
 class ConfigurationTest extends \PHPUnit_Framework_TestCase
 {
-    public function testGetConfigTreeBuilder()
+    private $configuration;
+
+    public function setUp()
     {
-        $configuration = new Configuration();
+        $this->configuration = new Configuration();
+    }
 
-        $tree = $configuration->getConfigTreeBuilder();
+    public function testEmptyConfiguration()
+    {
+        $processed = $this->process([]);
 
-        $this->assertInstanceOf(
-            TreeBuilder::class,
-            $tree
+        $this->assertEquals([
+            'dsl_version' => 'Latest'
+        ], $processed);
+    }
+
+    protected function process(array $config)
+    {
+        $processor = new Processor();
+
+        return $processor->processConfiguration(
+            $this->configuration,
+            $config
         );
+    }
 
-        $this->assertEquals(
-            'elastica_specification_bundle',
-            $tree->buildTree()->getName()
-        );
+    public function testSetAValidBuilderVersion()
+    {
+        $processed = $this->process([
+            [
+                'dsl_version' => 'Version120',
+            ]
+        ]);
+
+        $this->assertEquals([
+            'dsl_version' => 'Version120'
+        ], $processed);
+    }
+
+    public function testSetAnInvalidBuilderVersion()
+    {
+        $this->expectException(\InvalidArgumentException::class);
+
+        $this->process([
+            [
+                'dsl_version' => 'Fake',
+            ]
+        ]);
     }
 }

@@ -159,3 +159,14 @@ $products = $productRepository->findSatisfying(
     )
 );
 ```
+
+### Elastica configuration
+
+You can specify the Elastica DSL version using `dsl_version` configuration node (default: `Latest`).
+To use a different version, just set it to the [version classname](https://github.com/ruflin/Elastica/tree/master/lib/Elastica/QueryBuilder/Version).
+
+```yaml
+# app/config/config.yml
+elastica_specification_bundle:
+    dsl_version: Version120 
+```

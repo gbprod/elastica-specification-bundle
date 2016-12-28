@@ -21,6 +21,10 @@ class ElasticaSpecificationExtension extends Extension
     {
         $configuration = new Configuration();
         $config = $this->processConfiguration($configuration, $configs);
+        $container->setParameter(
+            'gbprod.elastica_specification_dsl.class',
+            'Elastica\\QueryBuilder\\Version\\'.$config['dsl_version']
+        );
 
         $loader = new Loader\YamlFileLoader(
             $container,
