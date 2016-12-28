@@ -43,12 +43,12 @@ class ConfigurationTest extends \PHPUnit_Framework_TestCase
     {
         $processed = $this->process([
             [
-                'dsl_version' => 'Version120',
+                'dsl_version' => 'Version240',
             ]
         ]);
 
         $this->assertEquals([
-            'dsl_version' => 'Version120'
+            'dsl_version' => 'Version240'
         ], $processed);
     }
 
