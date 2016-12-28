@@ -1,6 +1,11 @@
 services:
+    gbprod.elastica_specification_dsl:
+        class: "%gbprod.elastica_specification_dsl.class%"
+
     gbprod.elastica_specification_querybuilder:
         class: Elastica\QueryBuilder
+        arguments:
+            - "@gbprod.elastica_specification_dsl"
 
     gbprod.elastica_specification_registry:
         class: GBProd\ElasticaSpecification\Registry

@@ -2,8 +2,10 @@
 
 namespace GBProd\ElasticaSpecificationBundle\DependencyInjection;
 
+use Elastica\QueryBuilder\Version;
 use Symfony\Component\Config\Definition\Builder\TreeBuilder;
 use Symfony\Component\Config\Definition\ConfigurationInterface;
+use Symfony\Component\Config\Definition\Exception\InvalidConfigurationException;
 
 /**
  * Configuration
@@ -18,7 +20,24 @@ class Configuration implements ConfigurationInterface
     public function getConfigTreeBuilder()
     {
         $treeBuilder = new TreeBuilder();
-        $treeBuilder->root('elastica_specification_bundle');
+        $root = $treeBuilder->root('elastica_specification_bundle');
+
+        $root
+            ->children()
+                ->scalarNode('dsl_version')
+                    ->defaultValue('Latest')
+                    ->cannotBeEmpty()
+                    ->beforeNormalization()
+                        ->ifTrue(function($value) {
+                            return !is_string($value)
+                                || !class_exists('Elastica\\QueryBuilder\\Version\\'.$value)
+                            ;
+                        })
+                        ->thenInvalid('QueryBuilder version "%s" does not exists')
+                    ->end()
+                ->end()
+            ->end()
+        ;
 
         return $treeBuilder;
     }
