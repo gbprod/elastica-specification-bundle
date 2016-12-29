@@ -4,7 +4,7 @@ namespace Tests\GBProd\ElasticaSpecificationBundle\DependencyInjection;
 
 use Elastica\QueryBuilder;
 use Elastica\QueryBuilder\Version\Latest;
-use Elastica\QueryBuilder\Version\Version120;
+use Elastica\QueryBuilder\Version\Version240;
 use GBProd\ElasticaSpecificationBundle\DependencyInjection\ElasticaSpecificationExtension;
 use GBProd\ElasticaSpecification\Handler;
 use GBProd\ElasticaSpecification\Registry;
@@ -90,11 +90,11 @@ class ElasticaSpecificationExtensionTest extends \PHPUnit_Framework_TestCase
     public function testLoadCustomizedDsl()
     {
         $this->load([
-            'dsl_version' => 'Version120',
+            'dsl_version' => 'Version240',
         ]);
 
         $dsl = $this->container->get('gbprod.elastica_specification_dsl');
 
-        $this->assertInstanceOf(Version120::class, $dsl);
+        $this->assertInstanceOf(Version240::class, $dsl);
     }
 }

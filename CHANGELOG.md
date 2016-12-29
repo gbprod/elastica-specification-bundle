@@ -8,6 +8,7 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 - Better Makefile
 - Specify dsl version
+- Dependencies version
 
 ### Added 
 
