@@ -4,7 +4,7 @@
     "type": "bundle",
     "require": {
         "php": ">=5.6",
-        "gbprod/elastica-specification": "^1.0",
+        "gbprod/elastica-specification": "^1.1",
         "symfony/framework-bundle": "^2.7|^3.0",
         "symfony/expression-language": "^2.7|^3.0"
     },
