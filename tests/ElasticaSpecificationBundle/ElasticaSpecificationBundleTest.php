@@ -4,6 +4,7 @@ namespace Tests\GBProd\ElasticaSpecificationBundle;
 
 use GBProd\ElasticaSpecificationBundle\DependencyInjection\Compiler\QueryFactoryPass;
 use GBProd\ElasticaSpecificationBundle\ElasticaSpecificationBundle;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
@@ -12,7 +13,7 @@ use Symfony\Component\HttpKernel\Bundle\Bundle;
  *
  * @author GBProd <contact@gb-prod.fr>
  */
-class ElasticaSpecificationBundleTest extends \PHPUnit_Framework_TestCase
+class ElasticaSpecificationBundleTest extends TestCase
 {
     public function testConstruction()
     {

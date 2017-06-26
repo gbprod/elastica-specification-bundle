@@ -3,13 +3,14 @@
     "description": "This bundle integrates elastica-specification with Symfony",
     "type": "bundle",
     "require": {
-        "php": ">=5.6",
-        "gbprod/elastica-specification": "^1.1",
+        "php": ">=7.0",
+        "gbprod/elastica-specification": "^2.0",
         "symfony/framework-bundle": "^2.7|^3.0",
-        "symfony/expression-language": "^2.7|^3.0"
+        "symfony/expression-language": "^2.7|^3.0",
+        "symfony/yaml": "^2.7|^3.0"
     },
     "require-dev": {
-        "phpunit/phpunit": "^5.5"
+        "phpunit/phpunit": "^6.0"
     },
     "license": "MIT",
     "authors": [
