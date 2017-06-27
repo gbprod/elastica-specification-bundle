@@ -8,6 +8,7 @@ use Elastica\QueryBuilder\Version\Version240;
 use GBProd\ElasticaSpecificationBundle\DependencyInjection\ElasticaSpecificationExtension;
 use GBProd\ElasticaSpecification\Handler;
 use GBProd\ElasticaSpecification\Registry;
+use PHPUnit\Framework\TestCase;
 use Symfony\Component\DependencyInjection\ContainerBuilder;
 
 /**
@@ -15,7 +16,7 @@ use Symfony\Component\DependencyInjection\ContainerBuilder;
  *
  * @author gbprod <contact@gb-prod.fr>
  */
-class ElasticaSpecificationExtensionTest extends \PHPUnit_Framework_TestCase
+class ElasticaSpecificationExtensionTest extends TestCase
 {
     private $extension;
     private $container;

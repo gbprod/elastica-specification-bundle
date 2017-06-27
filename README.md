@@ -51,7 +51,7 @@ use GBProd\Specification\Specification;
 
 class IsAvailable implements Specification
 {
-    public function isSatisfiedBy($candidate)
+    public function isSatisfiedBy($candidate): bool
     {
         return $candidate->isSellable()
             && $candidate->expirationDate() > new \DateTime('now')
@@ -89,7 +89,7 @@ class IsAvailableFactory implements Factory
 ### Declare your Factory
 
 ```yaml
-// src/GBProd/Acme/AcmeBundle/Resource/config/service.yml
+# src/GBProd/Acme/AcmeBundle/Resource/config/service.yml
 
 services:
     acme.elastica.query_factory.is_available:
@@ -101,7 +101,7 @@ services:
 ### Inject handler in your repository class
 
 ```yaml
-// src/GBProd/Acme/AcmeBundle/Resource/config/service.yml
+# src/GBProd/Acme/AcmeBundle/Resource/config/service.yml
 
 services:
     acme.product_repository:
