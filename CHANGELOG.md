@@ -4,6 +4,9 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/gbprod/elastica-specification-bundle/compare/v2.0.0...HEAD)
 
+ - Symfony 4 support
+ - Upgrade dependencies
+
 ## [v2.0.0](https://github.com/gbprod/elastica-specification-bundle/compare/v1.1.0...v2.0.0)
 
  - Some changes for php7

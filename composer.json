@@ -3,11 +3,11 @@
     "description": "This bundle integrates elastica-specification with Symfony",
     "type": "bundle",
     "require": {
-        "php": ">=7.0",
+        "php": "^7.0",
         "gbprod/elastica-specification": "^2.0",
-        "symfony/framework-bundle": "^2.7|^3.0",
-        "symfony/expression-language": "^2.7|^3.0",
-        "symfony/yaml": "^2.7|^3.0"
+        "symfony/framework-bundle": "^2.7|^3.0|^4.0",
+        "symfony/expression-language": "^2.7|^3.0|^4.0",
+        "symfony/yaml": "^2.7|^3.0|^4.0"
     },
     "require-dev": {
         "phpunit/phpunit": "^6.0"
