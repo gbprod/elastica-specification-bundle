@@ -1,17 +1,21 @@
 services:
     gbprod.elastica_specification_dsl:
         class: "%gbprod.elastica_specification_dsl.class%"
+        public: true
 
     gbprod.elastica_specification_querybuilder:
         class: Elastica\QueryBuilder
         arguments:
             - "@gbprod.elastica_specification_dsl"
+        public: true
 
     gbprod.elastica_specification_registry:
         class: GBProd\ElasticaSpecification\Registry
+        public: true
 
     gbprod.elastica_specification_handler:
         class: GBProd\ElasticaSpecification\Handler
         arguments:
             - "@gbprod.elastica_specification_registry"
             - "@gbprod.elastica_specification_querybuilder"
+        public: true
